@@ -1,0 +1,19 @@
+name: CI
+
+on: push
+
+jobs:
+  integrate:
+    name: "Continuous Integration"
+    runs-on: ubuntu-latest
+    container: mcr.microsoft.com/dotnet/core/sdk:3.1
+    defaults:
+      run:
+        shell: bash
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install Dependencies
+        run: dotnet restore
+      - continue-on-error: false
